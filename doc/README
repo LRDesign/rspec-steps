@@ -2,16 +2,25 @@
 ## ( or: why would I want to relearn how to write specs? )
 
 RSpec Steps allows you to chain examples into a series of steps that run
-in sequence and which stop when a step fails.  It's often incredibly
-useful to be able to aseemble a series of tests that should all pass,
-but where completely isolating them is less than sensible.
+in sequence and which stop when a step fails.  Unlike 'normal' rSpec examples,
+state is maintained between steps so you can test things that must occur in
+sequence.
+
+It's often incredibly useful to be able to aseemble a series of tests that 
+should all pass, but where completely isolating them is less than sensible.
 
 ( RSpec Steps has gone on with the tide of progress - it only supports RSpec
 3.x. If you need Rspec 2 suport, check out two-step:
 https://github.com/LRDesign/two-step )
 
-One excellent example is web site integration tests.  With RSpec steps you can
-do:
+## Example Uses
+
+### Website Integration and E2E Tests
+
+RSpec offers an alternative to systems, like Cucumber, that establish an entire
+DSL for identifying a sequence of user actions.  By making each action a step, you
+can test them with plain RSpec syntax.   This example uses Capybara for browser
+commands and assertions.
 
 ```ruby
 RSpec::Steps.steps "Login and change password" do
