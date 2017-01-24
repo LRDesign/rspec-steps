@@ -23,7 +23,7 @@ module RSpec::Steps
       name = args.first
       raise "shared step lists need a String for a name" unless name.is_a? String
       raise "there is already a step list named #{name}" if SharedSteps.has_key?(name)
-      SharedSteps[name] = Describer.new(*args, {:caller => caller}, &block)
+      SharedSteps[name] = Describer.new(args, {:caller => caller}, &block)
     end
   end
   extend DSL
